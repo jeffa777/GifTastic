@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fun with Gifs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="bg">
+    <div class="container">
+                <h1>Celebrities</h1>
+            
+                <!-- Rendered Buttons will go Here  -->
+                <button data-celeb="Jimmy Fallon">Jimmy Fallon</button>
+                <button data-celeb="Kevin Hart">Kevin Hart</button>
+                <button data-celeb="Jennifer Lawrence">Jennifer Lawrence</button>
+                <button data-celeb="Anna Kendrick">Anna Kendrick</button>
+                <button data-celeb="Robert Downey Jr">Robert Downey Jr</button>
+                <button data-celeb="Chris Evans">Chris Evans</button>
+                <button data-celeb="Chris Hemsworth">Chris Hemsworth</button>
+                <button data-celeb="Scarlet Johansen">Scarlett Johansen</button>
+                <button data-celeb="Chris Pratt">Chris Pratt</button>
+                <button data-celeb="Chris Pine">Chris Pine</button>
+                </div>
+                <div id="buttons-view"></div> <!--new buttons should appear here-->
+            
+                <form id="people-form">
+                  <label for="person-input">Add a Celebrity</label>
+                  <input type="text" id="person-input">
+                  <br>
+            
+                  <!-- Button triggers new person to be added -->
+                  <input id="add-person" type="submit" value="Add a celebrity">
+                </form>
+            
+                 <div id="gifs-appear-here"></div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript">
+
+                var topics = ["Jimmy Fallon", "Kevin Hart", "Jennifer Lawrence", "Anna Kendrick", "Robert Downey Jr", "Chris Evans", "Chris Hemsworth", "Scarlet Johansen", "Chris Pratt", "Chris Pine"];
+
+                function displayCelebInfo() {
+
+                var celeb = $(this).attr("data-celeb");            
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + celeb + "&api_key=odp3RujKlss2HBDsWZdZebTtgynpqcdn&limit=10";
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }) .then(function(response) {
+                
+                var results = response.data;
+
+                for (var i = 0; i < results.length; i++) {
+
+                  var celebDiv = $("<div>");
+
+                  var p = $("<p>").text("Rating: " + results[i].rating);
+
+                  var celebImage = $("<img>");
+
+                  celebImage.attr("src", results[i].image.fixed_height.url);
+
+
+                celebDiv.append(p);
+                celebDiv.append(celebImage);
+                $("#gifs-appear-here").prepend(celebDiv);
+            }
+        });              
+    }    
+
+
+                function renderButtons() {
+                    $("#buttons-view").empty();
+
+                    for (var i = 0; i < topics.length; i++) {
+
+                        var a = $("button");
+                        a.addClass("celeb-btn");
+                        a.attr("data-celeb", topics[i]);
+                        a.text(topics[i]);
+                        $("#buttons-view").append(a);
+                    }
+                }
+
+                $("#add-person").on("click", function(event) {
+                    event.preventDefault();
+                    var celeb = $("#person-input").val().trim();
+
+                    topics.push(celeb);
+
+                    renderButtons();
+                });
+
+                $(document).on("click", "celeb-btn", displayCelebInfo);
+
+                renderButtons();
+
+            </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+        <!--container close-->
+    </div>
+</div> <!--background image close-->
+</body>
+</html>
