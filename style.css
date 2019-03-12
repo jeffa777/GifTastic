@@ -1,31 +1,44 @@
 body, html {
     height: 100%;
     margin: 0;
-}
-
-.bg {
     background-image: url(https://wallpapercave.com/wp/OZLYsgd.jpg);
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
 }
 
+/* .bg {
+    background-image: url(https://wallpapercave.com/wp/OZLYsgd.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: repeat-y;
+    background-size: cover;
+} */
+
 #people-form {
     float: right;
-    background-color: rgb(35, 35, 53);
-    opacity: 0.75;
+    background-color: rgb(35, 35, 53, 0.75);
     color: silver;
     padding: 10px;
+    border: 2px solid silver;
 }
 
 h1 {
-    background-color: rgb(35, 35, 53);
-    opacity: 0.75;
+    background-color: rgb(35, 35, 53, 0.75);
     color: red;
     text-align: center;
     width: 30%;
     margin-right: auto;
     margin-left: auto;
     padding-bottom: 8px;
+}
+
+#gifs-appear-here {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: rgb(35, 35, 53, 0.75);
+    color: silver;
+}
+
+.gif {
+    margin-right: 10px;
 }
