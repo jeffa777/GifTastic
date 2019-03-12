@@ -1,18 +1,11 @@
+/*background image*/
 body, html {
     height: 100%;
     margin: 0;
     background-image: url(https://wallpapercave.com/wp/OZLYsgd.jpg);
     background-size: cover;
 }
-
-/* .bg {
-    background-image: url(https://wallpapercave.com/wp/OZLYsgd.jpg);
-    height: 100%;
-    background-position: center;
-    background-repeat: repeat-y;
-    background-size: cover;
-} */
-
+/*form to enter new celebs*/
 #people-form {
     float: right;
     background-color: rgb(35, 35, 53, 0.75);
@@ -20,7 +13,7 @@ body, html {
     padding: 10px;
     border: 2px solid silver;
 }
-
+/*title*/
 h1 {
     background-color: rgb(35, 35, 53, 0.75);
     color: red;
@@ -30,7 +23,7 @@ h1 {
     margin-left: auto;
     padding-bottom: 8px;
 }
-
+/*gifs box background*/
 #gifs-appear-here {
     display: flex;
     flex-wrap: wrap;
@@ -38,7 +31,7 @@ h1 {
     background-color: rgb(35, 35, 53, 0.75);
     color: silver;
 }
-
+/*margin to space the gifs*/
 .gif {
     margin-right: 10px;
 }

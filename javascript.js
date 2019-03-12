@@ -1,7 +1,7 @@
 
-
+// list of celebs in buttons to start
 var topics = ["Jimmy Fallon", "Kevin Hart", "Jennifer Lawrence", "Anna Kendrick", "Robert Downey Jr", "Chris Evans", "Chris Hemsworth", "Scarlet Johansen", "Chris Pratt", "Chris Pine"];
-
+//,ready to start the page properly
 $(document).ready(function () {
     $("#gifs-appear-here").hide();
     renderButtons();
@@ -19,19 +19,19 @@ $(document).ready(function () {
     }
 
     $(document).on("click", ".celeb-btn", displayCelebInfo);
-
+    //on click to show gifs
     function displayCelebInfo() {
 
         var celeb = $(this).attr("data-celeb");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + celeb + "&rating=g&limit=10&api_key=odp3RujKlss2HBDsWZdZebTtgynpqcdn";
         $("#gifs-appear-here").show();
-        // $("#gifs-appear-here").empty();
+        //emptys the current gifs to make room for new gifs
+        $("#gifs-appear-here").empty();
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response)
-
+            
             var results = response.data;
 
             for (var i = 0; i < results.length; i++) {
@@ -67,7 +67,7 @@ $(document).ready(function () {
     });
 
     $("#gifs-appear-here").on("click", ".gif", function () {
-        // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+        
         var state = $(this).attr("data-state");
 
         if (state === "still") {
@@ -78,8 +78,6 @@ $(document).ready(function () {
             $(this).attr("data-state", "still");
         }
     });
-
-    // $(document).on("click", "celeb-btn", displayCelebInfo);
 
     renderButtons();
 
