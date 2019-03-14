@@ -1,6 +1,6 @@
 
 // list of celebs in buttons to start
-var topics = ["Jimmy Fallon", "Kevin Hart", "Jennifer Lawrence", "Anna Kendrick", "Robert Downey Jr", "Chris Evans", "Chris Hemsworth", "Scarlet Johansen", "Chris Pratt", "Chris Pine"];
+var topics = ["Jimmy Fallon", "Kevin Hart", "Jennifer Lawrence", "Anna Kendrick", "Robert Downey Jr", "Chris Evans", "Chris Hemsworth", "Scarlett Johanssen", "Chris Pratt", "Chris Pine"];
 //,ready to start the page properly
 $(document).ready(function () {
     $("#gifs-appear-here").hide();
